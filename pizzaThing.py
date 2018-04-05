@@ -34,8 +34,8 @@ def getOrderType():
         print('invalid option try again')
         getOrderType()
         
-#Function for printing avaliable pizza options
-def printPizza(): 
+
+def printPizza(): #Function for printing avaliable pizza options
     global orderList
     print('\nStandard Pizzas')
     for index, val in enumerate(regularList):
@@ -44,8 +44,8 @@ def printPizza():
     for index, val in enumerate(gourmetList):
         print(str(index + 8) + ': ' + str(val))
 
-#Function for nicely printing current order so far
-def printOrder():
+
+def printOrder(): #Function for nicely printing current order so far
     print('Regular Pizzas ($8.50 Each):')
     for i in regularList:
         print(i +  ': ' + str(regularOrderList.count(i)))
@@ -53,8 +53,8 @@ def printOrder():
     for i in gourmetList:
         print(i + ': ' + str(gourmetOrderList.count(i)))
 
-# Main Ordering function
-def getPizza():
+
+def getPizza(): # Main Ordering function
     os.system('clear')
     print('type "n" to cancel')
     while True:
