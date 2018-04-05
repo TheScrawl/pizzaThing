@@ -20,11 +20,11 @@ def getOrderType():
     orderType = None
     print('1: Delivery')
     print('2: Pickup')
-	    
+            
     orderType = input()
     try:
         if int(orderType) == 1 or int(orderType) == 2:
-	    pass
+            pass
         else:
             raise ValueError    
     except ValueError:
@@ -54,7 +54,7 @@ def printOrder(): #Function for nicely printing current order so far
 def getPizza(): # Main Ordering function
     os.system('clear')
     while True:
-	print('Type "n" to end order')
+        print('Type "n" to end order')
         printPizza()
         pizzaInput = input('Pizza Num: ')
         try:
@@ -79,22 +79,22 @@ def getPizza(): # Main Ordering function
             pass
         if orderMore == 'n':
             getPizza()
-	else:
-	    print('invalid choice, defaulting to yes')
-	    pass
+        else:
+            print('invalid choice, defaulting to yes')
+            pass
     else:
         pass
 
 #Get Order Type
 getOrderType()
-if orderType == 1:
+if int(orderType) == 1:
     customer1 = customer(
         str(input('Customer Name: ')),
         str(input('Customer Address: ')),
         str(input('Customer Phone Num: '))
 )
 
-if orderType == 2:
+if int(orderType) == 2:
     customer1 = customer(str(input('Customer Name: ')), None, None)
 
 #Order Pizza
