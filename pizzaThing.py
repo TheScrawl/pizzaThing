@@ -23,10 +23,8 @@ def getOrderType():
 	    
     orderType = input()
     try:
-        if int(orderType) == 1:
-            orderType = 'Delivery'
-        elif int(orderType) == 2:
-            orderType = 'Pickup'
+        if int(orderType) == 1 or int(orderType) == 2:
+	    pass
         else:
             raise ValueError    
     except ValueError:
@@ -36,7 +34,6 @@ def getOrderType():
         
 
 def printPizza(): #Function for printing avaliable pizza options
-    global orderList
     print('\nStandard Pizzas')
     for index, val in enumerate(regularList):
         print(str(index + 1) + ': ' + str(val))
@@ -56,8 +53,8 @@ def printOrder(): #Function for nicely printing current order so far
 
 def getPizza(): # Main Ordering function
     os.system('clear')
-    print('type "n" to cancel')
     while True:
+	print('Type "n" to end order')
         printPizza()
         pizzaInput = input('Pizza Num: ')
         try:
@@ -66,10 +63,8 @@ def getPizza(): # Main Ordering function
             if int(pizzaInput) > 7:
                 gourmetOrderList.append(gourmetList[int(pizzaInput) - 8])
             os.system('clear')
-            printOrder()            
-        except ValueError:
-            pass
-        except IndexError:
+            printOrder()
+        except (ValueError, IndexError):
             pass
             
         if len(gourmetOrderList) + len(regularOrderList) >= 5:
@@ -84,19 +79,22 @@ def getPizza(): # Main Ordering function
             pass
         if orderMore == 'n':
             getPizza()
+	else:
+	    print('invalid choice, defaulting to yes')
+	    pass
     else:
         pass
 
 #Get Order Type
 getOrderType()
-if orderType == 'Delivery':
+if orderType == 1:
     customer1 = customer(
         str(input('Customer Name: ')),
         str(input('Customer Address: ')),
         str(input('Customer Phone Num: '))
 )
 
-if orderType == 'Pickup':
+if orderType == 2:
     customer1 = customer(str(input('Customer Name: ')), None, None)
 
 #Order Pizza
